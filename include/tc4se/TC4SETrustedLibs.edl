@@ -1,0 +1,40 @@
+enclave 
+{
+    from "sgx_tsgxssl.edl" import *;
+    from "sgx_pthread.edl" import *;
+    from "sgx_ttls.edl" import *;
+    untrusted
+    {
+        uint64_t tc4se_AttestationService_getAttestationQuoteSize([out] uint32_t* quoteBufferSize);
+
+        uint64_t tc4se_AttestationService_getQeTargetInfo(
+            [out] sgx_target_info_t* qeTargetInfo
+        );
+
+        
+
+
+        uint64_t tc4se_AttestationService_getAttestationQuote(
+            [in] const sgx_report_t* attestationReport, 
+            [out, count=quoteBufferSize] uint8_t* quoteBuffer, uint32_t quoteBufferSize
+        );
+        uint64_t tc4se_AttestationService_getSuplementalDataSize([out] uint32_t* supplementalDataSize);
+        uint64_t tc4se_AttestationService_verifyQuote(
+            [in, count=quoteBufSize] const uint8_t* quoteBuf, uint32_t quoteBufSize,
+            [in, count=collateralBufSize] const uint32_t* collateralBuf, uint32_t collateralBufSize,
+            [in, out] sgx_ql_qe_report_info_t* qveReportInfo,
+            [out] time_t* currentTime,
+            [out] uint32_t* collateralExpirationStatus,
+            [out] sgx_ql_qv_result_t* quoteVerificationResult,
+            [out, count=supplementalDataSize] uint8_t* supplementalDataBuffer, uint32_t supplementalDataSize 
+        );
+
+                        
+        size_t u_sgxssl_write(int fd, [in, size=n] const void* buf, size_t n);
+        size_t u_sgxssl_read(int fd, [out, size=n] void* buf, size_t n);
+        int u_sgxssl_close(int fd);
+
+        uint64_t tc4se_getCurrentTime();
+        void tc4se_printDebug([in, string] const char* str);
+    };
+};

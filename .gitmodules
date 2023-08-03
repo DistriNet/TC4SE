@@ -1,0 +1,6 @@
+[submodule "external/SGXDataCenterAttestationPrimitives"]
+	path = external/SGXDataCenterAttestationPrimitives
+	url = https://github.com/intel/SGXDataCenterAttestationPrimitives.git
+[submodule "external/vcpkg"]
+	path = external/vcpkg
+	url = https://github.com/Microsoft/vcpkg.git

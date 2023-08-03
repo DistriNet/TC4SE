@@ -1,0 +1,17 @@
+// ocall for untrusted functions 
+enclave {
+    from "sgx_tsgxssl.edl" import *;
+    from "sgx_pthread.edl" import *;
+    from "sgx_tstdc.edl" import *;
+    from "sgx_ttls.edl" import *;
+    from "tc4se/TC4SETrustedLibs.edl" import *;
+
+    include "tc4se/ErrorCode.h"
+
+    trusted {
+        public ERRORCODE_T tc4se_test_prepareServer();
+        public ERRORCODE_T tc4se_test_prepareClient();
+        public ERRORCODE_T tc4se_test_acceptPeer(int32_t socketFd, [in, string] const char* payload);
+        public ERRORCODE_T tc4se_test_connectPeer(int32_t socketFd, [in, string] const char* payload);
+    };
+};

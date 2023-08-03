@@ -1,0 +1,18 @@
+{
+    "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+    "dependencies": [
+        "boost-outcome",
+        "boost-algorithm",
+        "boost-program-options",
+        "fmt",
+        "gtest",
+        "rapidjson",
+        "llhttp"
+    ],
+    "features": {
+        "untrusted": {
+            "description": "Dependencies for Untrusted",
+            "dependencies": [ "boost-program-options", "gtest", "curl" ]
+        }
+    }
+}

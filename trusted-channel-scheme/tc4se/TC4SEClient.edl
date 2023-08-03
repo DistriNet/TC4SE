@@ -1,0 +1,10 @@
+enclave {
+    from "tc4se/TC4SETrustedLibs.edl" import *;
+    include "tc4se/ErrorCode.h"
+
+    trusted {
+        public ERRORCODE_T tc4se_test_prepareClient();
+        public ERRORCODE_T tc4se_test_initiateTrustExchange(int32_t socketFd);
+        public ERRORCODE_T tc4se_test_connectTrustedChannelPeer(int32_t socketFd, [in, string] const char* payload);
+    };
+};
